@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Todos.module.css';
 
-const TodoItem = (props) => {
+const TodoItem = React.memo((props) => {
   const {
     todo,
     animationsEnabled,
@@ -59,6 +59,6 @@ const TodoItem = (props) => {
       </div>
     </li>
   );
-};
+});
 
 export default TodoItem;

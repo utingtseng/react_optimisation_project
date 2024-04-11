@@ -1,4 +1,4 @@
-import React, { useContext, useReducer, useState } from 'react';
+import React, { useCallback, useContext, useReducer, useState } from 'react';
 import { PartyContext } from '../../providers/PartyProvider';
 import { ProfileContext } from '../../providers/ProfileProvider';
 import { generateRandomTodos } from '../../utils/utils';
@@ -28,9 +28,10 @@ const Todos = () => {
     setNewTodoText('');
   };
 
-  const formatTodoText = (text, index) => {
+  // This function gets new reference each time TodoItem is created
+  const formatTodoText = useCallback((text, index) => {
     return `${text.toLowerCase()} (${index + 1} of 500)`;
-  };
+  }, []);
 
   return (
     <div className={styles.container}>
